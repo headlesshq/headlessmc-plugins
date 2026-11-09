@@ -10,6 +10,7 @@
       ],
       "license": "MIT",
       "homepage": "https://github.com/headlesshq/headlessmc-quilt",
+      "icon": "https://raw.githubusercontent.com/headlesshq/headlessmc-quilt/refs/heads/main/logo.png",
       "downloads": [
         {
           "version": "1.0.0",
