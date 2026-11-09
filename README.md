@@ -2,9 +2,9 @@
 
 This repository contains the metadata for officially listed [HeadlessMc](https://github.com/headlesshq/headlessmc) plugins.
 
-| Id | Name | Description | Latest | Source |
-|----|------|-------------|--------|--------|
-| `quilt` | Quilt | Adds the Quilt platform to HeadlessMc | 1.0.0 | [headlessmc-quilt](https://github.com/headlesshq/headlessmc-quilt) |
+| Icon | Id | Name | Description | Latest | Source |
+|------|----|------|-------------|--------|--------|
+| <img src="https://raw.githubusercontent.com/headlesshq/headlessmc-quilt/refs/heads/main/logo.png" width="64" alt="Quilt"> | `quilt` | Quilt | Adds the Quilt platform to HeadlessMc | 1.0.0 | [headlessmc-quilt](https://github.com/headlesshq/headlessmc-quilt) |
 
 ## Submitting a plugin or a new version
 
