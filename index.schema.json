@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/headlesshq/headlessmc-plugins/main/index.schema.json",
+  "title": "HeadlessMc plugin index",
+  "type": "object",
+  "required": ["schemaVersion", "plugins"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 1 },
+    "plugins": { "type": "array", "items": { "$ref": "#/definitions/entry" } }
+  },
+  "definitions": {
+    "entry": {
+      "type": "object",
+      "required": ["id", "downloads"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$", "description": "Lowercase plugin id, the same as in the plugin manifest." },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "authors": { "type": "array", "items": { "type": "string" } },
+        "license": { "type": "string", "description": "Preferably an SPDX identifier." },
+        "homepage": { "type": "string", "format": "uri" },
+        "icon": { "type": "string", "format": "uri" },
+        "downloads": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/release" } }
+      }
+    },
+    "release": {
+      "type": "object",
+      "required": ["version", "url", "sha256", "size"],
+      "properties": {
+        "version": { "type": "string", "minLength": 1 },
+        "headlessmc": { "type": "string", "description": "Version range of compatible HeadlessMc versions, e.g. [3.0.0,4)." },
+        "java": { "type": "integer", "minimum": 8, "description": "Minimum Java version." },
+        "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "size": { "type": "integer", "minimum": 1 }
+      }
+    }
+  }
+}
