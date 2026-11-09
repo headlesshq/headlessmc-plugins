@@ -1,0 +1,23 @@
+name: Validate index
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check index.json against the JSON schema
+        run: |
+          pip install --quiet check-jsonschema
+          check-jsonschema --schemafile index.schema.json index.json
+      - name: Validate ids, versions, urls, hashes and sizes
+        env:
+          GH_TOKEN: ${{ secrets.PLUGIN_READ_TOKEN || github.token }}
+        run: scripts/validate-index.sh index.json

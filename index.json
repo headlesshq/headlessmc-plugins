@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "plugins": [
+    {
+      "id": "quilt",
+      "name": "Quilt",
+      "description": "Adds the Quilt platform to HeadlessMc: launching Quilt clients and servers and reading quilt.mod.json.",
+      "authors": [
+        "HeadlessHQ"
+      ],
+      "license": "MIT",
+      "homepage": "https://github.com/headlesshq/headlessmc-quilt",
+      "downloads": [
+        {
+          "version": "1.0.0",
+          "headlessmc": "[3.0.0-RC9,4)",
+          "java": 25,
+          "url": "https://github.com/headlesshq/headlessmc-quilt/releases/download/1.0.0/headlessmc-quilt-1.0.0.jar",
+          "sha256": "5983cf969f6c0ad301c8409fffeacf53bed723a6ccfa93c0d98b35dc6bf4a72f",
+          "size": 24977
+        }
+      ]
+    }
+  ]
+}
