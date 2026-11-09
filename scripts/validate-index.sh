@@ -11,7 +11,8 @@ err() { echo "::error::$*"; fail=1; }
 [ "$(jq -r '.schemaVersion' "$index")" = "1" ] || err "schemaVersion must be 1"
 jq -e '.plugins | type == "array"' "$index" >/dev/null || err "plugins must be an array"
 
-jq -r '.plugins[].id' "$index" | grep -vE '^[a-z0-9][a-z0-9._-]*$' | while read -r id; do err "plugin id '$id' must be lowercase ([a-z0-9._-])"; done
+bad=$(jq -r '.plugins[].id' "$index" | grep -vE '^[a-z0-9][a-z0-9._-]*$')
+[ -z "$bad" ] || err "plugin ids must be lowercase ([a-z0-9._-]): $bad"
 dups=$(jq -r '.plugins[].id' "$index" | sort | uniq -d)
 [ -z "$dups" ] || err "duplicate plugin ids: $dups"
 dups=$(jq -r '.plugins[] | .id as $id | .downloads[]?.version | "\($id) \(.)"' "$index" | sort | uniq -d)
