@@ -56,6 +56,14 @@ Run it locally with `GH_TOKEN=$(gh auth token) scripts/validate-index.sh` (needs
 `--offline` skips the downloads). While plugin repositories are private, github.com release URLs
 are downloaded through `gh` with the token; other URLs are fetched anonymously.
 
+While a plugin repository is private, the default `github.token` of this repository cannot read it, so the
+download check fails with "url not reachable" unless a repository secret named `PLUGIN_READ_TOKEN` exists.
+Create a fine-grained personal access token with read-only `Contents: read` access to the plugin repositories
+(for example `headlesshq/headlessmc-quilt`) and store it as `PLUGIN_READ_TOKEN` in the repository's Actions secrets.
+Secrets are not exposed to pull requests from forks, so for external contributors the check fails
+while plugin repositories are private; maintainers can re-run it from a branch in this repository.
+Once the plugin repositories are public, no secret is needed and the checks pass anonymously.
+
 ## Review and trust policy
 
 Plugins run with the full permissions of HeadlessMc, so listing is a trust decision.
